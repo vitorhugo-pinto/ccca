@@ -106,7 +106,8 @@ app.get("/accounts/:accountId", async function (req, res) {
     "select * from ccca.account where account_id = $1",
     [accountId]
   );
-  res.json(output);
+  await connection.$pool.end();
+  res.json(output ?? null);
 });
 
 app.listen(3000);
