@@ -81,7 +81,7 @@ describe("Sing up tests", function () {
       isPassenger: false,
     });
     const responseJson = await response.json();
-    expect(responseJson.message).toBe(-1);
+    expect(responseJson.message).toBe("Invalid CPF");
   });
 
   test("Fails due to invalid email", async function () {
@@ -95,7 +95,7 @@ describe("Sing up tests", function () {
       isPassenger: false,
     });
     const responseJson = await response.json();
-    expect(responseJson.message).toBe(-2);
+    expect(responseJson.message).toBe("Invalid email");
   });
 
   test("Fails due to invalid name", async function () {
@@ -109,7 +109,7 @@ describe("Sing up tests", function () {
       isPassenger: false,
     });
     const responseJson = await response.json();
-    expect(responseJson.message).toBe(-3);
+    expect(responseJson.message).toBe("Invalid name");
   });
 
   test("Fails due to already exists", async function () {
@@ -132,7 +132,7 @@ describe("Sing up tests", function () {
       isPassenger: false,
     });
     const responseJson = await response.json();
-    expect(responseJson.message).toBe(-4);
+    expect(responseJson.message).toBe("Already exists");
   });
 
   test("Fails due to invalid password", async function () {
@@ -146,7 +146,7 @@ describe("Sing up tests", function () {
       isPassenger: false,
     });
     const responseJson = await response.json();
-    expect(responseJson.message).toBe(-5);
+    expect(responseJson.message).toBe("Invalid password");
   });
 
   test("Fails due to invalid car plate", async function () {
@@ -160,7 +160,7 @@ describe("Sing up tests", function () {
       isPassenger: false,
     });
     const responseJson = await response.json();
-    expect(responseJson.message).toBe(-6);
+    expect(responseJson.message).toBe("Invalid car plate");
   });
 });
 
@@ -179,15 +179,13 @@ describe("Get an account by id", function () {
     const { accountId } = await createUserResponse.json();
     const response = await fetchUserById(accountId);
     const responseJson = await response.json();
-    console.log("response json", responseJson);
-
     expect(responseJson).toMatchObject<FetchUserResponseType>({
       ...expectedResponse,
       account_id: accountId,
     });
   });
 
-  test("Successfully fetches a user by id", async function () {
+  test("Successfully fetches when user does not exists", async function () {
     const accountId = "d4c5ac45-872b-4e61-80b6-ab287e32c991";
     const response = await fetchUserById(accountId);
     const responseJson = await response.json();
