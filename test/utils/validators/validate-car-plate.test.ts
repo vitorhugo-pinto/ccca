@@ -1,4 +1,4 @@
-import { validateCarPlate } from "../src/validateCarPlate";
+import { validateCarPlate } from "../../../src/utils/validators/validate-car-plate";
 
 test.each(["ABC1234"])("Must valid car plate %s", function (carPlate: string) {
   const isValid = validateCarPlate(carPlate);

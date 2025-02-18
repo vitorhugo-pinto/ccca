@@ -1,4 +1,4 @@
-import { validateName } from "../src/validateName";
+import { validateName } from "../../../src/utils/validators/validate-name";
 
 test.each(["John Doe", "john doe"])(
   "Must valid name %s",

@@ -1,4 +1,4 @@
-import { validateEmail } from "../src/validateEmail";
+import { validateEmail } from "../../../src/utils/validators/validate-email";
 
 test.each(["John@Doe", "john@doe"])(
   "Must valid email %s",
