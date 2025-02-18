@@ -1,4 +1,4 @@
-import { validatePassword } from "../src/validatePassword";
+import { validatePassword } from "../../../src/utils/validators/validate-password";
 
 test.each(["asdFGH123", "asdG123456", "aG1aG129999"])(
   "Deve validar a senha %s",

@@ -1,4 +1,4 @@
-import { validateCpf } from "../src/validateCpf";
+import { validateCpf } from "../../../src/utils/validators/validate-cpf";
 
 test.each(["97456321558", "71428793860", "974.563.215-58", "714.287.938-60"])(
   "Deve validar um cpf %s",
@@ -8,7 +8,7 @@ test.each(["97456321558", "71428793860", "974.563.215-58", "714.287.938-60"])(
   }
 );
 
-test.each(["", undefined, null, "11111111111"])(
+test.each(["", undefined, null, "11111111111", "1"])(
   "Não deve validar um cpf %s",
   function (cpf: any) {
     const isValid = validateCpf(cpf);
